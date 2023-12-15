@@ -10,3 +10,4 @@ dotenv = "0.15.0"
 ensemble = { version = "0.0.5", features = ["postgres"] }
 futures = "0.3.29"
 rocket = { version = "0.5.0", features = ["json"] }
+macros = { path = "./macros" }

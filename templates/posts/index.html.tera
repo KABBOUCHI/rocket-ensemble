@@ -1,0 +1,55 @@
+{% extends "base" %} {% block content %}
+<h1>Posts:</h1>
+
+<ul>
+  {% for post in posts -%}
+  <li style="display: flex; ">
+    <a href="/posts/{{ post.id }}" style="margin-right: 10px;">{{ post.title }}</a>
+
+    <form
+      action="/posts/{{ post.id }}"
+      method="post"
+      class=""
+      style="margin: 0 !important"
+    >
+      <input type="hidden" name="_method" value="delete" />
+      <button
+        type="submit"
+        class="outline"
+        style="color: red; border-color: red; padding: 5px; font-size: 10px; margin: 0 !important;"
+      >
+        Delete
+      </button>
+    </form>
+  </li>
+  {%- endfor %}
+</ul>
+
+{% if posts | length == 0 %}
+<p>No posts yet.</p>
+{% endif %}
+
+<h2>New Post</h2>
+
+{% if flash %}
+
+{% if flash.message %}
+
+<p style="color: yellow;">{{ flash.message }}</p>
+
+{% endif %}
+
+{% endif %}
+
+<form action="/posts" method="post">
+  <input type="text" name="title" placeholder="Title" />
+  <br />
+  <br />
+  <textarea name="content" placeholder="Content"></textarea>
+
+  <br />
+  <br />
+  <input type="submit" value="Create Post" />
+</form>
+
+{% endblock %}

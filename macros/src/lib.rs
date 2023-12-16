@@ -17,7 +17,7 @@ pub fn derive_rocket(input: proc_macro::TokenStream) -> proc_macro::TokenStream 
                 rocket::tokio::task::block_in_place(move || {
                     rocket::tokio::runtime::Handle::current()
                         .block_on(async move { 
-                            User::find(param.parse().map_err(|_| "Model Not Found")?).await.map_err(|_| "Model Not Found") 
+                            #name::find(param.parse().map_err(|_| "Model Not Found")?).await.map_err(|_| "Model Not Found") 
                         })
                 })
             }

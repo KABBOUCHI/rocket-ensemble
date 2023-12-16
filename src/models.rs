@@ -4,11 +4,11 @@ use ensemble::{
 };
 
 #[derive(Debug, Model, macros::Rocket)]
-pub struct User {
+pub struct Post {
     #[model(uuid)]
     pub id: Uuid,
-    pub name: String,
-    pub email: String,
+    pub title: String,
+    pub content: String,
     pub created_at: DateTime,
     pub updated_at: DateTime,
 }

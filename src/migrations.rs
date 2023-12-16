@@ -1,21 +1,21 @@
 use ensemble::migrations::{Error, Migration, Schema};
 
 #[derive(Debug, Default)]
-pub struct CreateUsersTable;
+pub struct CreatePostsTable;
 
 #[ensemble::async_trait]
-impl Migration for CreateUsersTable {
+impl Migration for CreatePostsTable {
     async fn up(&self) -> Result<(), Error> {
-        Schema::create("users", |table| {
+        Schema::create("posts", |table| {
             table.uuid();
-            table.string("name");
-            table.string("email").unique(true);
+            table.string("title");
+            table.text("content");
             table.timestamps();
         })
         .await
     }
 
     async fn down(&self) -> Result<(), Error> {
-        Schema::drop("users").await
+        Schema::drop("posts").await
     }
 }

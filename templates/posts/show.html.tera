@@ -1,0 +1,12 @@
+{% extends "base" %}
+
+
+{% block content %}
+    <a href="/posts">Back</a>
+
+    <h1>Post: {{  post.title }}</h1>
+
+    <p>
+        {{ post.content }}
+    </p>
+{% endblock %}
